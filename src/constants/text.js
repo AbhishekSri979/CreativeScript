@@ -15,6 +15,7 @@ const AppConstants = {
     invalidEmailAddress: 'Invalid email',
     pleaseEnterEmail: 'Please enter email address',
     pleaseEnterPassword: 'Please enter password',
+    pleaseENterName: 'Please enter name'
 }
 
 export default AppConstants;

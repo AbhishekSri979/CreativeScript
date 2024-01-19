@@ -7,6 +7,8 @@ const AppImages = {
     Facebook: require('../assets/images/facebook.png'),
     Google: require('../assets/images/google.png'),
     Checkbox: require('../assets/images/checkbox.png'),
+    Back: require('../assets/images/back.png'),
+    RightIcon: require('../assets/images/rightIcon.png'),
 }
 
 export default AppImages

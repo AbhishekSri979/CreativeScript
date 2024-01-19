@@ -4,9 +4,9 @@ import { AppConstants, AppImages } from '../constants'
 import { authScreenStyle } from '../styles/styles'
 import { AuthHeader, Button, Input } from '.'
 
-const Login = ({ }) => {
+const Login = ({ navigateToSignupPage }) => {
 
-    const [loginInputField, setLoginInputField] = useState({ email: '', password: '', emailError: '', passwordError: '' })
+    const [form, setForm] = useState({ email: '', password: '', emailError: '', passwordError: '' })
     const [rememberMe, setRememberMe] = useState(false)
 
     const RenderSocialIcon = ({ icon }) => {
@@ -18,8 +18,7 @@ const Login = ({ }) => {
     }
 
     const handleInputField = (data, key) => (value) => {
-        console.log('handleInputField:::: ', data, value);
-        setLoginInputField(state => ({
+        setForm(state => ({
             ...state,
             [data]: value,
             [key]: '',
@@ -27,37 +26,36 @@ const Login = ({ }) => {
     }
 
     const handleButtonPress = () => {
-
         let isError = false
         let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (loginInputField.email.trim().length === 0 && loginInputField.password.trim().length === 0) {
+        if (form.email.trim().length === 0 && form.password.trim().length === 0) {
             isError = true
-            setLoginInputField(state => ({
+            setForm(state => ({
                 ...state,
                 ['emailError']: AppConstants.pleaseEnterEmail,
                 ['passwordError']: AppConstants.pleaseEnterPassword,
             }))
         }
 
-        if (!emailRegex.test(loginInputField.email)) {
+        if (!emailRegex.test(form.email)) {
             isError = true
-            setLoginInputField(state => ({
+            setForm(state => ({
                 ...state,
                 ['emailError']: AppConstants.invalidEmailAddress,
             }))
         }
 
-        if (loginInputField.email.trim().length === 0) {
+        if (form.email.trim().length === 0) {
             isError = true
-            setLoginInputField(state => ({
+            setForm(state => ({
                 ...state,
                 ['emailError']: AppConstants.pleaseEnterEmail,
             }))
         }
 
-        if (loginInputField.password.trim().length === 0) {
+        if (form.password.trim().length === 0) {
             isError = true
-            setLoginInputField(state => ({
+            setForm(state => ({
                 ...state,
                 ['passwordError']: AppConstants.pleaseEnterPassword,
             }))
@@ -65,7 +63,6 @@ const Login = ({ }) => {
         if (!isError) {
 
         }
-
     }
 
     return (
@@ -76,19 +73,19 @@ const Login = ({ }) => {
                 content={AppConstants.content}
             />
             <Input
-                value={loginInputField.email}
+                value={form.email}
                 icon={AppImages.Email}
                 placeholder={AppConstants.email}
                 onChangeText={handleInputField('email', 'emailError')}
                 keyboardType='email-address'
-                error={loginInputField.emailError}
+                error={form.emailError}
                 containerStyle={{ marginBottom: 0 }} />
             <Input
-                value={loginInputField.password}
+                value={form.password}
                 icon={AppImages.Lock}
                 placeholder={AppConstants.password}
                 onChangeText={handleInputField('password', 'passwordError')}
-                error={loginInputField.passwordError}
+                error={form.passwordError}
                 secureTextEntry
                 containerStyle={{ marginBottom: 0 }} />
             <View style={authScreenStyle.content}>
@@ -136,7 +133,7 @@ const Login = ({ }) => {
             }}>
                 <View style={[authScreenStyle.dontHaveAccntView]}>
                     <Text style={authScreenStyle.dontHaveAcntTextStyle}>{AppConstants.dontHaveAnAccount}</Text>
-                    <TouchableOpacity activeOpacity={.7}>
+                    <TouchableOpacity activeOpacity={.7} onPress={navigateToSignupPage}>
                         <Text style={authScreenStyle.signUpTextStyle}>{` ${AppConstants.signUp}`}</Text>
                     </TouchableOpacity>
                 </View>

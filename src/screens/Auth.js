@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
+import { View, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import { Login, SignUp } from '../components'
 
 const AuthScreen = () => {
     const [activePage, setActivePage] = useState('login')
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 enabled={false}
@@ -14,22 +14,23 @@ const AuthScreen = () => {
                     (page => {
                         switch (page) {
                             case 'login':
-                                return <Login handleButtonPress={() => setActivePage('signUp')} />
+                                return <Login navigateToSignupPage={() => setActivePage('signUp')} />
                             case 'signUp':
-                                return <SignUp handleButtonPress={() => setActivePage('login')} />
+                                return <SignUp onPressBack={() => setActivePage('login')} />
                             default:
                                 return null
                         }
                     })(activePage)
                 }
             </KeyboardAvoidingView>
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#FFFFFF'
     },
     content: {
         backgroundColor: '#FFF',
