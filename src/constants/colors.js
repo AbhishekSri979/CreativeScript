@@ -5,7 +5,8 @@ const AppColors = {
     Eight_Zero: '#8083A3',
     Three_three: '#333333',
     ED_color: '#EDEDED',
-    white: '#FFFFFF'
+    white: '#FFFFFF',
+    red: '#F33535'
 }
 
 

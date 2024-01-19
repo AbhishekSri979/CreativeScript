@@ -14,10 +14,11 @@ const AuthHeader = ({ icon, title, content }) => {
 
 const styles = StyleSheet.create({
     logoContainer: {
-        height: '30%',
+        height: '25%',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         backgroundColor: '#FFFFFF',
+        marginTop: 25
     },
     logoStyle: {
         height: 74,

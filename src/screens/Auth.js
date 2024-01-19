@@ -1,20 +1,11 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, KeyboardAvoidingView, Platform, Keyboard, Text, Pressable, Image, SafeAreaView } from 'react-native'
-import { AuthHeader, Login, SignUp } from '../components'
-import { AppColors, AppConstants, AppImages } from '../constants'
+import { View, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
+import { Login, SignUp } from '../components'
 
 const AuthScreen = () => {
-
     const [activePage, setActivePage] = useState('login')
-
-
     return (
         <View style={styles.container}>
-            <AuthHeader
-                icon={AppImages.Logo}
-                title={AppConstants.signIn}
-                content={AppConstants.content}
-            />
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 enabled={false}
@@ -23,7 +14,9 @@ const AuthScreen = () => {
                     (page => {
                         switch (page) {
                             case 'login':
-                                return <Login />
+                                return <Login handleButtonPress={() => setActivePage('signUp')} />
+                            case 'signUp':
+                                return <SignUp handleButtonPress={() => setActivePage('login')} />
                             default:
                                 return null
                         }

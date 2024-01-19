@@ -7,9 +7,14 @@ const AppConstants = {
     dontHaveAnAccount: 'Don’t have an account ?',
     signUp: 'Sign Up',
     proceed: 'Proceed',
-    rememberMe: "Remember me",
     email: 'Email',
-    password: 'Password'
+    password: 'Password',
+    name: 'Name',
+    agreeTermsCondition: 'I agree with terms & conditions',
+    allowNotification: 'Allow Notifications',
+    invalidEmailAddress: 'Invalid email',
+    pleaseEnterEmail: 'Please enter email address',
+    pleaseEnterPassword: 'Please enter password',
 }
 
 export default AppConstants;

@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native'
 import { AppColors } from '../constants';
 
-const loginStyle = StyleSheet.create({
+const authScreenStyle = StyleSheet.create({
     container: {
-        marginTop: 30,
-        flex: 1
+        flex: 1,
     },
     content: {
         paddingHorizontal: 28,
+        width: '100%'
     },
     row: {
         flexDirection: 'row',
@@ -18,7 +18,6 @@ const loginStyle = StyleSheet.create({
     checkBoxRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        width: '30%'
     },
     line: {
         backgroundColor: AppColors.ED_color,
@@ -78,5 +77,5 @@ const loginStyle = StyleSheet.create({
 });
 
 export {
-    loginStyle
+    authScreenStyle
 }
