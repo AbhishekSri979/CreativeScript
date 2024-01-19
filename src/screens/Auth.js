@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
-import { View, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
+import { StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import { Login, SignUp } from '../components'
+import { updateInfoAction } from '../redux/actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
 
 const AuthScreen = () => {
-    const [activePage, setActivePage] = useState('login')
+    const dispatch = useDispatch()
+    const { activePage } = useSelector((state) => state.$auth)
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <KeyboardAvoidingView
@@ -14,9 +17,9 @@ const AuthScreen = () => {
                     (page => {
                         switch (page) {
                             case 'login':
-                                return <Login navigateToSignupPage={() => setActivePage('signUp')} />
+                                return <Login navigateToSignupPage={() => dispatch(updateInfoAction('signUp', 'activePage'))} />
                             case 'signUp':
-                                return <SignUp onPressBack={() => setActivePage('login')} />
+                                return <SignUp onPressBack={() => dispatch(updateInfoAction('login', 'activePage'))} />
                             default:
                                 return null
                         }

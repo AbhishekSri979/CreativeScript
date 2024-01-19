@@ -1,24 +1,13 @@
-// import { ApIConstant } from "../../Themes";
+import { ApIConstant } from '../../constants'
+function updateInfoAction(data, key) {
+    const action = {
+        type: ApIConstant.UPDATE_INFO,
+        data,
+        key,
+    };
+    return action;
+}
 
-// function updateListAttendanceData(data, key) {
-//   const action = {
-//     type: ApIConstant.UPDATE_LIST_ATTENDANCE_DATA,
-//     data,
-//     key,
-//   };
-//   return action;
-// }
-
-// function scheduleListDataAction(data, key) {
-//   const action = {
-//     type: ApIConstant.UPDATE_SCHEDULE_LIST_DATA,
-//     data,
-//     key,
-//   };
-//   return action;
-// }
-
-// module.exports = {
-//   updateListAttendanceData,
-//   scheduleListDataAction
-// };
+module.exports = {
+    updateInfoAction
+};

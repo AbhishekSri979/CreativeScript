@@ -15,7 +15,17 @@ const AppConstants = {
     invalidEmailAddress: 'Invalid email',
     pleaseEnterEmail: 'Please enter email address',
     pleaseEnterPassword: 'Please enter password',
-    pleaseENterName: 'Please enter name'
+    pleaseENterName: 'Please enter name',
+    accntInfo: 'Account information',
+    googleBusinessProfile: 'Google Business Profile',
+    teamMembers: 'Team members'
 }
 
-export default AppConstants;
+const ApIConstant = {
+    UPDATE_INFO: 'UPDATE_INFO'
+}
+
+export {
+    AppConstants,
+    ApIConstant
+} 

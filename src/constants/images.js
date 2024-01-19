@@ -9,6 +9,18 @@ const AppImages = {
     Checkbox: require('../assets/images/checkbox.png'),
     Back: require('../assets/images/back.png'),
     RightIcon: require('../assets/images/rightIcon.png'),
+    Profile: require('../assets/images/profile.png'),
+    Shield: require('../assets/images/shield.png'),
+    ProfileUser: require('../assets/images/profileUser.png'),
+    People: require('../assets/images/people.png'),
+    Camera: require('../assets/images/camera.png'),
+    BG: require('../assets/images/bg.png'),
+    Shadow: require('../assets/images/shadow.png'),
+    Tab1: require('../assets/images/tab1.png'),
+    Tab2: require('../assets/images/tab2.png'),
+    Tab3: require('../assets/images/tab3.png'),
+    Tab4: require('../assets/images/tab4.png'),
+    Tab5: require('../assets/images/tab5.png'),
 }
 
 export default AppImages

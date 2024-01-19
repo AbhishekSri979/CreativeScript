@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { AppColors } from '../constants'
 
 const Button = ({ title, handleButtonPress }) => {

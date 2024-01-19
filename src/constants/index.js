@@ -1,9 +1,10 @@
 import AppImages from "./images";
 import AppColors from "./colors";
-import AppConstants from "./text";
+import { AppConstants, ApIConstant } from "./text";
 
 export {
     AppImages,
     AppColors,
-    AppConstants
+    AppConstants,
+    ApIConstant
 }

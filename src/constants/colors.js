@@ -6,7 +6,10 @@ const AppColors = {
     Three_three: '#333333',
     ED_color: '#EDEDED',
     white: '#FFFFFF',
-    red: '#F33535'
+    red: '#F33535',
+    B_Three: '#B3B3B3',
+    E_five: '#E5E5E5',
+    three_Three: '#333'
 }
 
 

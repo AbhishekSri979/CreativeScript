@@ -1,13 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, TouchableOpacity, Text, Image } from 'react-native'
 import { AppConstants, AppImages } from '../constants'
 import { authScreenStyle } from '../styles/styles'
 import { AuthHeader, Button, Input } from '.'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 
 const Login = ({ navigateToSignupPage }) => {
 
+    const navigation = useNavigation()
+    const isfocused = useIsFocused()
+
     const [form, setForm] = useState({ email: '', password: '', emailError: '', passwordError: '' })
     const [rememberMe, setRememberMe] = useState(false)
+
+    useEffect(() => {
+        if (!isfocused) {
+            setForm({ email: '', password: '', emailError: '', passwordError: '' })
+        }
+
+    }, [isfocused])
 
     const RenderSocialIcon = ({ icon }) => {
         return (
@@ -61,7 +72,7 @@ const Login = ({ navigateToSignupPage }) => {
             }))
         }
         if (!isError) {
-
+            navigation.navigate('Profile')
         }
     }
 

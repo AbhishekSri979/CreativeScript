@@ -76,6 +76,51 @@ const authScreenStyle = StyleSheet.create({
     },
 });
 
+const profileStyle = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'rgb(231,242,254)'
+    },
+    profileImageView: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: .4,
+        marginTop: 40
+    },
+    userNameStyle: {
+        fontSize: 18,
+        fontWeight: '500',
+        color: AppColors.three_Three,
+        top: 10
+    },
+    emailTextStyle: {
+        fontSize: 14,
+        fontWeight: '400',
+        color: AppColors.B_Three,
+        top: 15
+    },
+    sectionView: {
+        height: 58,
+        width: '90%',
+        borderWidth: 1,
+        borderColor: AppColors.E_five,
+        borderRadius: 12,
+        alignSelf: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        // paddingHorizontal: 20,
+        marginVertical: 10
+    },
+    sectionTextStyle: {
+        fontSize: 16,
+        fontWeight: '400',
+        color: AppColors.three_Three,
+        left: 10
+    }
+});
+
 export {
-    authScreenStyle
+    authScreenStyle,
+    profileStyle
 }

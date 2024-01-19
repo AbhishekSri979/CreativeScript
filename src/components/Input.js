@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, TextInput, Text, Image } from 'react-native'
-import { AppColors, AppImages } from '../constants'
+import { AppColors } from '../constants'
 
 
 const Input = ({ label, placeholder, icon, containerStyle, error, ...props }) => {

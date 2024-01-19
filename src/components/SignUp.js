@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, TouchableOpacity, Text, Image } from 'react-native'
 import { AppConstants, AppImages } from '../constants'
 import { authScreenStyle } from '../styles/styles'
 import { AuthHeader, Button, Input } from '.'
-import axios from 'axios';
+import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { updateInfoAction } from '../redux/actions/auth'
+import { useDispatch } from 'react-redux'
+
 
 const SignUp = ({ onPressBack }) => {
 
     const [form, setForm] = useState({ name: '', email: '', password: '', nameError: '', emailError: '', passwordError: '' })
     const [termsCondition, setTermsCondition] = useState(false)
     const [allowNotification, setAllowNotification] = useState(false)
-    const apiUrl = 'http://restapi.adequateshop.com/api/authaccount/registration';
+    const navigation = useNavigation()
+    const isFocused = useIsFocused()
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        if (!isFocused) {
+            setForm({ name: '', email: '', password: '', nameError: '', emailError: '', passwordError: '' })
+        }
+
+    }, [isFocused])
 
     const handleInputField = (data, key) => (value) => {
         setForm(state => ({
@@ -67,55 +78,37 @@ const SignUp = ({ onPressBack }) => {
         }
 
         if (!isError) {
-            // const requestParams = {
-            //     name: form.name,
-            //     email: form.email,
-            //     password: form.password,
-            // };
+            // makePostRequest() 
+            navigation.navigate('Profile')
+            dispatch(updateInfoAction('login', 'activePage'))
+        }
+    }
 
-            // const requestOptions = {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(requestParams)
-            // };
+    async function makePostRequest() {
+        const url = "http://restapi.adequateshop.com/api/authaccount/registration";
+        const headers = {
+            "Content-Type": "application/json",
+        };
 
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("Access-Control-Allow-Origin", '*');
+        const requestBody = {
+            name: form.name,
+            email: form.email,
+            password: form.password,
+        };
 
-            var raw = JSON.stringify({
-                "name": "Developer",
-                "email": "Developer5@gmail.com",
-                "password": 123456
-            });
+        const requestOptions = {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(requestBody),
+        };
 
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow'
-            };
-
-            fetch("http://restapi.adequateshop.com/api/authaccount/registration", requestOptions)
-                .then(response => console.log(response.text()))
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
-
-
-
-            // axios.post(apiUrl, jsonData, {
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            // })
-            //     .then(response => {
-            //         console.log('Success:', response.data);
-            //     })
-            //     .catch(error => {
-            //         console.error('Error:', error);
-            //     });
+        try {
+            const response = await fetch(url, requestOptions);
+            console.log('response', response);
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error);
         }
     }
 
